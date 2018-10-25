@@ -1,4 +1,3 @@
-
 import time
 
 
@@ -44,4 +43,19 @@ class Device:
             ('expire_time', self.expire_time),
             ('presence_start', self.presence_start),
             ('presence_end', self.presence_end)
+        ))
+
+class Lease:
+
+    def __init__(self, id=None, name=None):
+        self.id = id
+        self.name = name
+
+    def __iter__(self):
+        return iter((
+            ('id', self.id),
+            ('expir_ts', self.expir_ts),
+            ('mac_address', self.mac_address),
+            ('ip', self.ip),
+            ('host_name', self.host_name),
         ))

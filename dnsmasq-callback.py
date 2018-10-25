@@ -1,3 +1,4 @@
+#!/usr/bin/python
 """Handle the callback input from dnsmasq's `--dhcp-script`.
 
 Arguments:
@@ -24,11 +25,13 @@ Notes:
 import logging
 import os
 import sys
+import imp
 
 from wifi_occupancy_sensor.controllers import leases, database
 
 # this can be set in the enviroment of the dnsmasq process
-CONFIG = __import__(os.environ['WIFI_OCCUPANCY_SENSOR_CONFIGFILE'])
+CONFIG = imp.load_source('config', os.path.join(os.path.dirname(os.path.abspath(__file__)),'config.py'))
+DATABASE_FILENAME = 'testing.sqlite'
 
 
 def _dnsmasq_callback():

@@ -7,7 +7,7 @@ from flask_restful import Api
 from wifi_occupancy_sensor.controllers import DB, Devices, Users
 
 app = Flask(__name__)
-app.config.from_pyfile(os.environ['WIFI_OCCUPANCY_SENSOR_CONFIGFILE'])
+app.config.from_pyfile(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','config.py'))
 api = Api(app)
 
 

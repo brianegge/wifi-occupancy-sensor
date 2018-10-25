@@ -28,3 +28,10 @@ repository to do the following.
    garage door, music selections, etc.).
 1. Track the occupancy data over time to allow for analytical analysis.
 
+## Installation
+
+Steps to install this project on a Raspberry Pi.
+
+1. ```sudo apt-get install dnsmasq```
+1. Create file ```/etc/dnsmasq.d/dnsmasq.conf``` with content ```dhcp-script=/home/pi/wifi-occupancy-sensor/dnsmasq-callback.py```
+1. ```sudo /etc/init.d/dnsmasq restart```

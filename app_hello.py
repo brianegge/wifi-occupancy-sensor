@@ -1,16 +1,17 @@
+#!/usr/bin/python
 
 import os
 
-from flask import Flask, g
+from flask import Flask, g, render_template
 
 
 app = Flask(__name__)  # pylint: disable=invalid-name
-app.config.from_pyfile(os.environ['WIFI_OCCUPANCY_SENSOR_CONFIGFILE'])
+app.config.from_pyfile(os.path.join(os.path.dirname(os.path.abspath(__file__)),'config.py'))
 
 
 @app.route('/')
 def hello():
-    return render_template('network_display.html')
+    return render_template(os.path.join(os.path.dirname(os.path.abspath(__file__)),'templates/network_display.html'))
 
 @app.route('/bye')
 def bye():
@@ -37,4 +38,4 @@ def close_connection(_):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=8283)
